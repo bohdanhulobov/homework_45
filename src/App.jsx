@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Layout, Menu, Typography, theme } from "antd";
+import { Layout, Menu, Typography, theme, Button } from "antd";
 import {
   Navigate,
   Route,
@@ -7,7 +7,12 @@ import {
   useLocation,
   useNavigate,
 } from "react-router";
-import { BookOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  BookOutlined,
+  UserOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from "@ant-design/icons";
 import { useState, useEffect } from "react";
 
 const { Header, Content, Sider } = Layout;
@@ -164,20 +169,51 @@ function App() {
           style={{
             background: token.colorBgContainer,
             boxShadow: "inset -1px 0 0 rgba(0, 0, 0, 0.05)",
+            position: "relative",
           }}
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
           breakpoint="lg"
           collapsedWidth={isMobile ? 0 : 80}
+          trigger={null}
         >
-          <Menu
-            onClick={handleMenuClick}
-            selectedKeys={getSelectedKey()}
-            mode="inline"
-            items={menuItems}
-            style={{ height: "100%", paddingTop: "20px", borderRight: "none" }}
-          />
+          <div
+            style={{ display: "flex", flexDirection: "column", height: "100%" }}
+          >
+            <Menu
+              onClick={handleMenuClick}
+              selectedKeys={getSelectedKey()}
+              mode="inline"
+              items={menuItems}
+              style={{
+                flex: 1,
+                borderRight: "none",
+                paddingTop: "20px",
+                paddingBottom: "50px",
+              }}
+            />
+
+            <Button
+              type="primary"
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                position: "absolute",
+                bottom: 0,
+                width: "100%",
+                height: "40px",
+                borderRadius: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "none",
+                cursor: "pointer",
+              }}
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            >
+              {!collapsed && "Collapse"}
+            </Button>
+          </div>
         </Sider>
 
         <Layout style={{ padding: isMobile ? "12px" : "24px" }}>

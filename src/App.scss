@@ -48,7 +48,6 @@
   }
 }
 
-// Minimalist styling for the login container
 .login-container {
   max-width: 380px;
   margin: 0 auto;
@@ -75,7 +74,6 @@
   }
 }
 
-// Clean minimal styling for the sider menu
 .ant-layout-sider {
   .ant-menu {
     border-right: none;
@@ -95,7 +93,6 @@
   }
 }
 
-// Drawer styling
 .ant-drawer {
   .ant-drawer-header {
     border-bottom: 1px solid #f0f0f0;
@@ -119,7 +116,6 @@
   }
 }
 
-// Responsive adjustments
 @media (max-width: 768px) {
   #root {
     padding: 0;
