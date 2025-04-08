@@ -1,16 +1,155 @@
 #root {
-  padding: 2rem;
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  padding: 0;
 }
 
 .header {
   color: white;
-  min-height: 200px;
+  min-height: 64px;
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .desktop-menu {
+    flex: 1;
+    margin: 0 20px;
+
+    .ant-menu-horizontal {
+      line-height: 64px;
+
+      .ant-menu-item {
+        margin: 0 5px;
+        padding: 0 15px;
+
+        .ant-menu-title-content {
+          display: flex;
+          align-items: center;
+
+          .anticon {
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 4px;
+  }
+}
+
+// Minimalist styling for the login container
+.login-container {
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 16px;
+
+  .ant-form {
+    .ant-form-item {
+      margin-bottom: 14px;
+    }
+
+    .ant-input {
+      border-radius: 2px;
+    }
+
+    .ant-form-item:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .ant-btn-primary {
+    width: 100%;
+    border-radius: 2px;
+    box-shadow: none;
+  }
+}
+
+// Clean minimal styling for the sider menu
+.ant-layout-sider {
+  .ant-menu {
+    border-right: none;
+
+    .ant-menu-item {
+      margin: 2px 0;
+      border-radius: 0;
+
+      &.ant-menu-item-selected {
+        background-color: #e6f7ff;
+      }
+
+      .ant-menu-title-content {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+// Drawer styling
+.ant-drawer {
+  .ant-drawer-header {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .ant-menu-item {
+    margin: 4px 0;
+    padding: 0 16px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 0;
+
+    .ant-menu-title-content {
+      display: flex;
+      align-items: center;
+
+      .anticon {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  #root {
+    padding: 0;
+  }
+
+  .header {
+    padding: 0 10px;
+
+    .header-logo {
+      .ant-typography {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .login-container {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .header {
+    .header-logo {
+      .ant-typography {
+        font-size: 20px;
+      }
+    }
+  }
 }

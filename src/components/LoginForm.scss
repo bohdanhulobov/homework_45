@@ -1,6 +1,35 @@
 .login-form {
-  color: white;
-  .ant-form-item .ant-form-item-label > label {
-    color: white;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+
+  .ant-form-item {
+    margin-bottom: 16px;
+  }
+
+  .ant-input,
+  .ant-input-password {
+    border-radius: 3px;
+  }
+
+  .ant-input:focus,
+  .ant-input-focused {
+    box-shadow: none;
+  }
+
+  .ant-btn {
+    width: 100%;
+    border-radius: 3px;
+    height: 40px;
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  // Remove animation from button
+  .ant-btn-primary {
+    transition: background-color 0.2s;
   }
 }
