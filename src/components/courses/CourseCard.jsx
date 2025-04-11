@@ -1,11 +1,26 @@
 import { Button, Card, Typography, Space, Tag, Popconfirm } from "antd";
+import { useNavigate } from "react-router";
 
 const { Text, Title } = Typography;
 
 export default function CourseCard({ onEdit, onDelete, ...course }) {
+  const navigate = useNavigate();
+
+  const handleTitleClick = () => {
+    navigate(`/courses/${course.id}`);
+  };
+
   return (
     <Card
-      title={<Title level={4}>{course.name}</Title>}
+      title={
+        <Title
+          level={4}
+          onClick={handleTitleClick}
+          style={{ cursor: "pointer" }}
+        >
+          {course.name}
+        </Title>
+      }
       style={{ marginBottom: 16 }}
       extra={
         <Space>

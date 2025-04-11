@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Layout, Menu, Typography, theme, Button } from "antd";
 import {
   Navigate,
@@ -14,6 +14,8 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { useState, useEffect } from "react";
+import { fetchStudents } from "./store/features/studentsSlice";
+import { fetchCourses } from "./store/features/coursesSlice";
 
 const { Header, Content, Sider } = Layout;
 const { Title } = Typography;
@@ -22,10 +24,12 @@ import "./App.scss";
 import AccountInfo from "./components/AccountInfo";
 import LoginForm from "./components/LoginForm";
 import CoursesPage from "./components/courses/CoursesPage";
+import CourseDetailPage from "./components/courses/CourseDetailPage";
 import StudentsPage from "./components/StudentsPage";
 
 function App() {
   const user = useSelector((state) => state.currentUser);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const { token } = theme.useToken();
@@ -46,6 +50,13 @@ function App() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (user.isAuth) {
+      dispatch(fetchCourses());
+      dispatch(fetchStudents());
+    }
+  }, [user.isAuth, dispatch]);
 
   const menuItems = [
     {
@@ -229,6 +240,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/courses" replace />} />
               <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/courses/:id" element={<CourseDetailPage />} />
               <Route path="/students" element={<StudentsPage />} />
               <Route path="*" element={<Navigate to="/courses" replace />} />
             </Routes>
